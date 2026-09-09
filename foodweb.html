@@ -1,0 +1,555 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Foodie Tales | Discover Delicious Recipes</title>
+
+    <link rel="stylesheet" href="foodweb.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            <span>🍴</span>
+            Foodie Tales
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#recipes">Recipes</a></li>
+            <li><a href="#categories">Categories</a></li>
+            <li><a href="#videos">Videos</a></li>
+            <li><a href="#creators">Creators</a></li>
+        </ul>
+
+        <div class="nav-buttons">
+            <button id="darkModeBtn">🌙</button>
+            <button class="share-btn" onclick="openCreatorForm()">
+                + Share Recipe
+            </button>
+        </div>
+
+    </nav>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <span class="small-title">WELCOME TO FOODIE TALES</span>
+
+        <h1>
+            Discover food<br>
+            <span>worth sharing.</span>
+        </h1>
+
+        <p>
+            Explore delicious vegetarian, non-vegetarian,
+            vegan and Jain recipes made by food lovers.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#recipes" class="primary-btn">
+                Explore Recipes →
+            </a>
+
+            <button class="secondary-btn" onclick="openCreatorForm()">
+                Share Your Recipe
+            </button>
+        </div>
+
+    </div>
+
+    <div class="hero-image">
+        <img
+        src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80"
+        alt="Delicious food">
+    </div>
+
+</section>
+
+
+<!-- ================= CATEGORIES ================= -->
+
+<section class="categories" id="categories">
+
+    <div class="section-heading">
+
+        <span>EXPLORE</span>
+
+        <h2>Choose your food world</h2>
+
+        <p>
+            From comforting vegetarian meals to plant-based
+            delights, find something you'll love.
+        </p>
+
+    </div>
+
+
+    <div class="category-grid">
+
+        <div class="category-card veg"
+             onclick="filterDiet('veg')">
+
+            <div class="category-icon">🥗</div>
+
+            <h3>Vegetarian</h3>
+
+            <p>
+                Delicious vegetarian dishes,
+                including a dedicated Jain collection.
+            </p>
+
+            <button>Explore Veg →</button>
+
+        </div>
+
+
+        <div class="category-card nonveg"
+             onclick="filterDiet('nonveg')">
+
+            <div class="category-icon">🍗</div>
+
+            <h3>Non-Vegetarian</h3>
+
+            <p>
+                Chicken, fish, egg and other
+                delicious non-veg recipes.
+            </p>
+
+            <button>Explore Non-Veg →</button>
+
+        </div>
+
+
+        <div class="category-card vegan"
+             onclick="filterDiet('vegan')">
+
+            <div class="category-icon">🌱</div>
+
+            <h3>Vegan</h3>
+
+            <p>
+                100% plant-based recipes
+                packed with flavor.
+            </p>
+
+            <button>Explore Vegan →</button>
+
+        </div>
+
+
+        <div class="category-card jain"
+             onclick="filterDiet('jain')">
+
+            <div class="category-icon">🪷</div>
+
+            <h3>Jain Recipes</h3>
+
+            <p>
+                Special Jain-friendly recipes
+                without onion, garlic and root vegetables.
+            </p>
+
+            <button>Explore Jain →</button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= RECIPE FILTER ================= -->
+
+<section class="recipes-section" id="recipes">
+
+    <div class="section-heading">
+
+        <span>OUR RECIPES</span>
+
+        <h2>What are you craving?</h2>
+
+        <p>
+            Filter recipes by diet, meal and main ingredient.
+        </p>
+
+    </div>
+
+
+    <div class="filter-area">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="🔍 Search recipes..."
+            onkeyup="searchRecipes()"
+        >
+
+
+        <select id="dietFilter" onchange="filterRecipes()">
+
+            <option value="all">All Diets</option>
+            <option value="veg">Vegetarian</option>
+            <option value="nonveg">Non-Vegetarian</option>
+            <option value="vegan">Vegan</option>
+            <option value="jain">Jain</option>
+
+        </select>
+
+
+        <select id="mealFilter" onchange="filterRecipes()">
+
+            <option value="all">All Meals</option>
+            <option value="breakfast">Breakfast</option>
+            <option value="lunch">Lunch</option>
+            <option value="dinner">Dinner</option>
+            <option value="snacks">Snacks</option>
+
+        </select>
+
+
+        <select id="ingredientFilter" onchange="filterRecipes()">
+
+            <option value="all">Main Food Item</option>
+            <option value="paneer">Paneer</option>
+            <option value="rice">Rice</option>
+            <option value="potato">Potato</option>
+            <option value="chicken">Chicken</option>
+            <option value="fish">Fish</option>
+            <option value="egg">Egg</option>
+            <option value="vegetables">Vegetables</option>
+            <option value="lentils">Lentils</option>
+            <option value="pasta">Pasta</option>
+
+        </select>
+
+    </div>
+
+
+    <div id="recipeGrid" class="recipe-grid"></div>
+
+</section>
+
+
+<!-- ================= VIDEO SECTION ================= -->
+
+<section class="video-section" id="videos">
+
+    <div class="section-heading">
+
+        <span>WATCH & COOK</span>
+
+        <h2>Recipe videos</h2>
+
+        <p>
+            Watch, learn and cook along with our creators.
+        </p>
+
+    </div>
+
+
+    <div class="video-grid">
+
+        <div class="video-card">
+
+            <div class="video-wrapper">
+
+                <iframe
+                src="https://www.youtube.com/embed/1IszT_guI08"
+                title="Recipe video"
+                allowfullscreen>
+                </iframe>
+
+            </div>
+
+            <div class="video-info">
+
+                <span>🥗 VEGETARIAN</span>
+
+                <h3>Easy Indian Recipe</h3>
+
+                <p>
+                    A simple recipe perfect for a quick meal.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="video-card">
+
+            <div class="video-wrapper">
+
+                <iframe
+                src="https://www.youtube.com/embed/1-SJGQ2HLp8"
+                title="Recipe video"
+                allowfullscreen>
+                </iframe>
+
+            </div>
+
+            <div class="video-info">
+
+                <span>🍗 NON-VEG</span>
+
+                <h3>Easy Chicken Recipe</h3>
+
+                <p>
+                    Learn how to make a delicious chicken dish.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="video-card">
+
+            <div class="video-wrapper">
+
+                <iframe
+                src="https://www.youtube.com/embed/4aZr5hZXP_s"
+                title="Recipe video"
+                allowfullscreen>
+                </iframe>
+
+            </div>
+
+            <div class="video-info">
+
+                <span>🌱 VEGAN</span>
+
+                <h3>Plant-Based Cooking</h3>
+
+                <p>
+                    Simple and tasty vegan cooking ideas.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CREATORS ================= -->
+
+<section class="creator-section" id="creators">
+
+    <div class="creator-content">
+
+        <span>JOIN OUR COMMUNITY</span>
+
+        <h2>
+            Your recipe could<br>
+            be our next favorite.
+        </h2>
+
+        <p>
+            Are you passionate about cooking?
+            Share your special recipe with the Foodie Tales community.
+        </p>
+
+        <button class="primary-btn" onclick="openCreatorForm()">
+            Become a Creator →
+        </button>
+
+    </div>
+
+
+    <div class="creator-image">
+
+        <img
+        src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=800&q=80"
+        alt="Cooking">
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-logo">
+        🍴 Foodie Tales
+    </div>
+
+    <p>
+        Good food. Great stories. Happy people.
+    </p>
+
+    <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#recipes">Recipes</a>
+        <a href="#videos">Videos</a>
+        <a href="#creators">Creators</a>
+    </div>
+
+    <p class="copyright">
+        © 2026 Foodie Tales. Made with ❤️ for food lovers.
+    </p>
+
+</footer>
+
+
+<!-- ================= RECIPE MODAL ================= -->
+
+<div id="recipeModal" class="modal">
+
+    <div class="modal-content">
+
+        <button class="close-btn" onclick="closeRecipe()">
+            ×
+        </button>
+
+        <img id="modalImage" src="" alt="Recipe">
+
+        <div class="modal-text">
+
+            <span id="modalDiet"></span>
+
+            <h2 id="modalTitle"></h2>
+
+            <p id="modalDescription"></p>
+
+            <h3>Ingredients</h3>
+
+            <ul id="modalIngredients"></ul>
+
+            <h3>Cooking Method</h3>
+
+            <p id="modalMethod"></p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= CREATOR FORM ================= -->
+
+<div id="creatorModal" class="modal">
+
+    <div class="creator-form">
+
+        <button class="close-btn" onclick="closeCreatorForm()">
+            ×
+        </button>
+
+        <h2>Share Your Recipe 👩‍🍳</h2>
+
+        <p>
+            Tell us about your favorite recipe.
+        </p>
+
+
+        <form onsubmit="submitRecipe(event)">
+
+            <input
+                type="text"
+                id="creatorName"
+                placeholder="Your name"
+                required
+            >
+
+            <input
+                type="text"
+                id="recipeName"
+                placeholder="Recipe name"
+                required
+            >
+
+
+            <select id="creatorDiet" required>
+
+                <option value="">Choose diet</option>
+                <option value="veg">Vegetarian</option>
+                <option value="nonveg">Non-Vegetarian</option>
+                <option value="vegan">Vegan</option>
+                <option value="jain">Jain</option>
+
+            </select>
+
+
+            <select id="creatorMeal" required>
+
+                <option value="">Choose meal</option>
+                <option value="breakfast">Breakfast</option>
+                <option value="lunch">Lunch</option>
+                <option value="dinner">Dinner</option>
+                <option value="snacks">Snacks</option>
+
+            </select>
+
+
+            <input
+                type="text"
+                id="mainIngredient"
+                placeholder="Main ingredient"
+                required
+            >
+
+
+            <textarea
+                id="recipeDescription"
+                placeholder="Tell us about your recipe..."
+                required>
+            </textarea>
+
+
+            <textarea
+                id="recipeIngredients"
+                placeholder="Ingredients..."
+                required>
+            </textarea>
+
+
+            <textarea
+                id="recipeMethod"
+                placeholder="Cooking method..."
+                required>
+            </textarea>
+
+
+            <button type="submit" class="primary-btn">
+                Submit Recipe
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+
+</body>
+</html>
+
